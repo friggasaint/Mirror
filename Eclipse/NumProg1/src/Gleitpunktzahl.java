@@ -499,13 +499,30 @@ public class Gleitpunktzahl {
 		 * der BitFeldklasse. Achten Sie auf Sonderfaelle und die Einschraenkung
 		 * der Funktion BitFeld.sub.
 		 */
+		
 		Gleitpunktzahl gpz = new Gleitpunktzahl();
 		Gleitpunktzahl summand1 = new Gleitpunktzahl(this);
 		Gleitpunktzahl summand2 = new Gleitpunktzahl(r);
 		
+		// Sonderfälle bei denen erst garnicht gerechnet werden muss
+		// Sonderfall unendlich. Es wird angenommen unendlich hat bereits bei Eingang die richtige Darstellung.
+		if (this.isInfinite())
+			return new Gleitpunktzahl(this);
+		if (r.isInfinite())
+			return new Gleitpunktzahl(r);
+		// Sonderfall NaN
+		if (this.isNaN())
+			return getNaN();
+		if (r.isNaN())
+			return getNaN();
+		// Sonderfall Null
+		if(this.compareAbsTo(r) == 0 & (this.vorzeichen !=  r.vorzeichen))
+			return getNull();
+		
+		// start des addierens
 		denormalisiere(summand1, summand2);						// denormalisiere betragsmässig größere Zahl
 		if(summand1.vorzeichen & summand2.vorzeichen){			// beide negativ
-			gpz.mantisse = summand1.mantisse.add(summand2.mantisse);
+			gpz.mantisse = summand1.mantisse.add(summand2.mantisse);// e1=e2
 			gpz.vorzeichen = true;
 		}
 		else if (!summand1.vorzeichen & !summand2.vorzeichen){	// beide positiv
@@ -513,14 +530,23 @@ public class Gleitpunktzahl {
 			gpz.vorzeichen = false;
 		}
 		else{
-			if(summand1.toDouble() >= summand2.toDouble()){		// entscheide welcher Summand Größer ist
-				
+			if(summand1.toDouble() >= summand2.toDouble()){		// entscheide welcher Summand Größer ist. Dessen Vorzeichen wird übernommen.
+				gpz.mantisse = summand1.mantisse.sub(summand2.mantisse);
+				gpz.vorzeichen = summand1.vorzeichen;
+				}
+			else {
+				gpz.mantisse = summand2.mantisse.sub(summand1.mantisse);
+				gpz.vorzeichen = summand2.vorzeichen;
 			}
-			
 		}
-		gpz.exponent = summand1.exponent;
-		gpz.normalisiere(5);									// einfach mal 5 gewählt, nirgends steht welche Anzahl gewählt werden sollt(zumindest hab ich nix gelesen)
+		gpz.exponent = summand1.exponent;						// hier sollten beide exponenten eh gleich sein
+		gpz.normalisiere(32);									// einfach mal 32 gewählt, nirgends steht welche Anzahl gewählt werden sollt(zumindest hab ich nix gelesen)
 		
+		// Sonderfall unendlich entstanden
+		if (gpz.isInfinite()){
+			gpz.mantisse.setBits(false);
+			gpz.exponent.setInt(maxExponent);
+		}
 		return new Gleitpunktzahl(gpz);
 	}
 
@@ -538,7 +564,57 @@ public class Gleitpunktzahl {
 		 * der BitFeldklasse. Achten Sie auf Sonderfaelle und die Einschraenkung
 		 * der Funktion BitFeld.sub.
 		 */
-		return new Gleitpunktzahl();
+		
+		Gleitpunktzahl gpz = new Gleitpunktzahl();
+		Gleitpunktzahl summand1 = new Gleitpunktzahl(this);
+		Gleitpunktzahl summand2 = new Gleitpunktzahl(r);
+		
+		// Sonderfälle bei denen erst garnicht gerechnet werden muss
+		// Sonderfall unendlich/NaN. Es wird angenommen unendlich/NaN hat bereits bei Eingang die richtige Darstellung.
+		if (this.isInfinite())
+			return new Gleitpunktzahl(this);
+		if (r.isInfinite())
+			return new Gleitpunktzahl(r);
+		// Sonderfall NaN
+		if (this.isNaN())
+			return getNaN();
+		if (r.isNaN())
+			return getNaN();
+		// Sonderfall Null
+		if(this.compareAbsTo(r) == 0 & (this.vorzeichen ==  r.vorzeichen)){
+			System.out.println("dat null");
+			return getNull();
+		}
+
+		// start des subtrahieren
+		denormalisiere(summand1, summand2);						// denormalisiere betragsmässig größere Zahl
+		if(!summand1.vorzeichen & summand2.vorzeichen){			// beide negativ
+			gpz.mantisse = summand1.mantisse.add(summand2.mantisse);
+			gpz.vorzeichen = true;
+		}
+		else if (summand1.vorzeichen & !summand2.vorzeichen){	// beide positiv
+			gpz.mantisse = summand1.mantisse.add(summand2.mantisse);
+			gpz.vorzeichen = false;
+		}
+		else{
+			if(summand1.toDouble() >= summand2.toDouble()){		// entscheide welcher Summand Größer ist. Dessen Vorzeichen wird übernommen.
+				gpz.mantisse = summand1.mantisse.sub(summand2.mantisse);
+				gpz.vorzeichen = summand1.vorzeichen;
+				}
+			else {
+				gpz.mantisse = summand2.mantisse.sub(summand1.mantisse);
+				gpz.vorzeichen = summand2.vorzeichen;
+			}
+		}
+		gpz.exponent = summand1.exponent;
+		gpz.normalisiere(32);									// einfach mal 32 gewählt, nirgends steht welche Anzahl gewählt werden sollt(zumindest hab ich nix gelesen)
+		
+		// Sonderfall unendlichentstanden
+		if (gpz.isInfinite()){
+			gpz.mantisse.setBits(false);
+			gpz.exponent.setInt(maxExponent);
+		}
+		return new Gleitpunktzahl(gpz);
 	}
 
 }

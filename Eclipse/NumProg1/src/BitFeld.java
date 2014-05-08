@@ -310,7 +310,6 @@ public class BitFeld {
 			}
 			if (temp.bits[i] & b.bits[i]){			// both bits are true
 				field.bits[i] = false;
-				System.out.println("tt");
 			}
 			else if(!temp.bits[i] & !b.bits[i]){	// both bits are false
 				field.bits[i] = false;
