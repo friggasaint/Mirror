@@ -540,7 +540,7 @@ public class Gleitpunktzahl {
 			}
 		}
 		gpz.exponent = summand1.exponent;						// hier sollten beide exponenten eh gleich sein
-		gpz.normalisiere(32);									// einfach mal 32 gewählt, nirgends steht welche Anzahl gewählt werden sollt(zumindest hab ich nix gelesen)
+		gpz.normalisiere(anzBitsMantisse-1);									// einfach mal 32 gewählt, nirgends steht welche Anzahl gewählt werden sollt(zumindest hab ich nix gelesen)
 		
 		// Sonderfall unendlich entstanden
 		if (gpz.isInfinite()){
@@ -607,7 +607,7 @@ public class Gleitpunktzahl {
 			}
 		}
 		gpz.exponent = summand1.exponent;
-		gpz.normalisiere(32);									// einfach mal 32 gewählt, nirgends steht welche Anzahl gewählt werden sollt(zumindest hab ich nix gelesen)
+		gpz.normalisiere(anzBitsMantisse-1);									// einfach mal 32 gewählt, nirgends steht welche Anzahl gewählt werden sollt(zumindest hab ich nix gelesen)
 		
 		// Sonderfall unendlichentstanden
 		if (gpz.isInfinite()){
