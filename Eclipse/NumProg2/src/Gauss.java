@@ -13,20 +13,19 @@ public class Gauss {
 		//TODO: Diese Methode ist zu implementieren
 		double temp;		//used for calculation
 		// get size of vector for further calculation
-		int size = b.length;
+		int size = b.length-1;
 		// x vector
-		double[] x = new double[size];
+		double[] x = new double[size+1];
 
-		for	(int i=size; i <= 0 ; i--){
+		for	(int i=size; i >= 0 ; i--){
+			//punch together already calculated values
 			temp = 0.0;
-			for(int j=size; j <= i; j--){
-				temp =temp + R[i][j]*x[j];
+			for(int j=size; j >= i; j--){
+				temp = temp + R[i][j]*x[j];
 			}
-				
-				x[i] = b[i]/R[i][i] + temp;
-
+			//calculate specific x value
+			x[i] = (b[i] -temp)/R[i][i];
 		}
-		
 		return x;
 	}
 
@@ -39,7 +38,41 @@ public class Gauss {
 	 */
 	public static double[] solve(double[][] A, double[] b) {
 		//TODO: Diese Methode ist zu implementieren
-		return new double[2];
+		double temp;
+		double[] tempArr;		//used for calculation
+		boolean check = false;
+		// get size of vector for further calculation
+		int size = b.length-1;
+		// x vector
+		double[] x = new double[size+1];
+		double[][]a = A;	//working matrix
+		
+		
+		for(int i = 0; i <= size ; i++){		
+				//sort
+				while(check == false){
+					check = true;
+					for(int j = i; 0 <= size; j++){
+						if (Math.abs(a[i][i]) <  Math.abs(a[j][i])){
+							tempArr = a[i];
+							a[i] = a[j];
+							a[j] = tempArr;
+							check = false;
+						}
+					}
+				}
+				//produce zeroes
+				for(int j = i; j <=size; j++){
+					temp = a[j+1][j]/a[j][j];		//calculate factor for the row
+					for( int k = i; k <= size; k++){
+						a[j+1][k]=a[i][j];
+					}
+				}
+				
+		}
+		
+		
+		return x;
 	}
 
 	/**
