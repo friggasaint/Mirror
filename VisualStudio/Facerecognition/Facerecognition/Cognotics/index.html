@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Simple Camshift Wrapper</title>
+	<!-- <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /> -->
+	<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+	<meta http-equiv="Content-Language" content="en-us" />
+	<meta http-equiv="Description" content="Cognitive resources for robotics" />
+	<meta name="keywords" content="face recognition,face detection,face tracking,eigenface,opencv,computer vision,stereo vision,machine vision,pc vision,video processing,computer cameras,pc cameras,image processing,robot,robotics,robots,robotic,robot vision,image analysis,video analysis,pattern recognition,framegrabber,machine vision systems,webcam,quickcam" lang="en-us" />
+
+	<style type="text/css">
+		a { text-decoration:none }
+		a:link { color: #3333FF; }
+		a:visited { color: #3333FF; }
+	</style>
+
+	<style type="text/css">
+		a.uline { text-decoration:underline }
+		a:link { color: #3333FF; }
+		a:visited { color: #3333FF; }
+	</style>
+
+	<style type="text/css">
+		td.seabluebk { background-image: url(/bkg_1.png); }
+	</style>
+
+	<style type="text/css">
+		td.graybk { background-image: url(/bkg_2.png); }
+	</style>
+
+	<style type="text/css">
+		td.dkbluebk { background-image: url(/bkg_3.png); }
+	</style>
+
+	<style type="text/css">
+		td.dkbluehline
+		{
+			background-image: url(/bkg_3.png);
+			height: 1px;
+		}
+	</style>
+</head>
+<body bgcolor="#999999" text="#000000">
+
+
+<!-- Colored page border -->
+<table width="900" cellpadding="1" cellspacing="0" border="0"><tr><td class="graybk">
+
+<!-- Start of page -->
+<table width="900" cellpadding="0" cellspacing="0" border="0"><tr><td>
+
+<!-- Row 1, Header block -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+	<!-- Row 1, Col 1, logo -->
+	<td bgcolor="#ffffff" valign="top">
+		<a href="/index.html"><img src="/cognotics-logo-sm.png" border="0" width="328" height="92" alt="Cognotics Home" /></a>
+	</td>
+
+	<!-- Row 1, Col 2, spacer -->
+	<td width="220" bgcolor="#ffffff">
+		&nbsp;
+	</td>
+
+	<!-- Row 1, Col 3 (Search form) -->
+	<td bgcolor="#ffffff" align="right">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td>
+			<table width="100%" cellpadding="0" cellspacing="0" border="0">
+				<tr>
+					<td align="left" bgcolor="#ffffff">
+						<font face="verdana, helvetica, arial, sans-serif" size="-1">
+						Search Cognotics:
+						</font>
+					</td>
+				</tr>
+				<tr><td><img src="/white.png" border="0" width="5" height="5" alt=" " /></td></tr>
+				<tr>
+					<td align="left" bgcolor="#ffffff">
+						<!-- Google SiteSearch -->
+							<form action="http://www.cognotics.com/search.html" id="cse-search-box">
+							  <div>
+							    <input type="hidden" name="cx" value="partner-pub-7581467740658147:3plcid3eboc" />
+							    <input type="hidden" name="cof" value="FORID:10" />
+							    <input type="hidden" name="ie" value="ISO-8859-1" />
+							    <input type="text" name="q" size="31" />
+							    <input type="submit" name="sa" value="Search" />
+							  </div>
+							</form>
+							<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+						<!-- End: Google SiteSearch -->
+					</td>
+				</tr>
+			</table>
+		</td></tr></table>
+	</td>
+
+</tr></table>
+<!-- End: Row 1, Header block -->
+
+<!-- H-line -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr><td class="dkbluehline">
+	</td></tr>
+	<tr><td class="dkbluehline">
+	</td></tr>
+</table>
+<!-- End: H-line -->
+
+<!-- Hierarchical navigation -->
+<table width="100%" cellpadding="10" cellspacing="0" border="0">
+	<tr>
+		<td align="left" bgcolor="#FFFFCC">
+			<font face="verdana, helvetica, arial, sans-serif" size="-1">
+			<b>
+			<!-- You are here: -->
+			<a href="/index.html">Home</a> &gt;
+			<a href="/opencv/index.html">OpenCV&nbsp;Resources</a> &gt;
+			<a href="../index.html">Software&nbsp;Downloads</a> &gt;
+			Simple&nbsp;Camshift&nbsp;Wrapper
+			</b>
+			</font>
+		</td>
+	</tr>
+</table>
+<!-- End: Hierarchical navigation -->
+
+<!-- H-line -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr><td class="dkbluehline">
+	</td></tr>
+</table>
+<!-- End: H-line -->
+
+
+<!-- Row 3, Column layout for main content -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+
+<!-- Row 3, col 1, left-hand margin -->
+<td width="30" valign="top" bgcolor="#ffffff"><img src="/white.png" width="18" height="18" alt=" " border="0" /></td>
+
+
+<!-- Row 3, col 2, Main Content -->
+<td width="630" valign="top" align="left" bgcolor="#ffffff">
+
+<!-- Title -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr><td>&nbsp;</td></tr>
+	<tr>
+		<td>
+			<font face="verdana, helvetica, arial, sans-serif" size="+1">
+			<b>A&nbsp;Simple&nbsp;Camshift&nbsp;Wrapper</b>
+			</font>
+		</td>
+	</tr>
+</table>
+<!-- End: Title -->
+
+<!-- Page Body -->
+<!-- <p><font face="verdana, helvetica, arial, sans-serif" size="-1">&nbsp;</font></p> -->
+
+<p><font face="verdana, helvetica, arial, sans-serif" size="-1">
+Camshift is OpenCV's face tracking algorithm. There's currently no simple C-language
+example in the OpenCV samples directory for implementing Camshift. The implementation
+in the camshiftdemo program is intertwined with user-interace code that makes is
+fairly difficult to adapt to other purposes unless one is already very familiar with
+Camshift.
+</font></p>
+
+<p><font face="verdana, helvetica, arial, sans-serif" size="-1">
+There's a C++ wrapper class in cvaux.hpp but, this also is somewhat complex, with
+many interfaces. And of course, it's only available through C++.
+</font></p>
+
+<p><font face="verdana, helvetica, arial, sans-serif" size="-1">
+This Simple Camshift Wrapper is provided here to make Camshift more accessible
+to the casual, or beginning, user. It provides a minimal C-language interface with four main methods:
+</font></p>
+
+<ul>
+	<li><font face="verdana, helvetica, arial, sans-serif" size="-1">createTracker(): pre-allocates internal data structures</font></li>
+	<li><font face="verdana, helvetica, arial, sans-serif" size="-1">releaseTracker(): releases Camshift resources</font></li>
+	<li><font face="verdana, helvetica, arial, sans-serif" size="-1">startTracking(): initiates tracking from an image plus a rectangular region</font></li>
+	<li><font face="verdana, helvetica, arial, sans-serif" size="-1">track(): tracks the object in this region from frame to frame using Camshift</font></li>
+</ul>
+
+<p><font face="verdana, helvetica, arial, sans-serif" size="-1">
+There are also two methods for setting the parameters smin and vmin:
+</font></p>
+
+<ul>
+	<li><font face="verdana, helvetica, arial, sans-serif" size="-1">setVmin()</font></li>
+	<li><font face="verdana, helvetica, arial, sans-serif" size="-1">setSmin()</font></li>
+</ul>
+
+<p><font face="verdana, helvetica, arial, sans-serif" size="-1">
+The example program, Track Faces, uses the Simple Camshift Wrapper in a program
+that detects a face in live video and automatically begins tracking
+it.
+</font></p>
+
+
+<p><font face="verdana, helvetica, arial, sans-serif" size="-1">&nbsp;</font></p>
+
+<p><font face="verdana, helvetica, arial, sans-serif" size="-1">
+<b><a class="uline" href="camshift_wrapper.zip">Download Camshift Wrapper</a></b>
+</font></p>
+
+<p><font face="verdana, helvetica, arial, sans-serif" size="-1">
+<b><a class="uline" href="patches.zip">Optional Patches</a></b>.
+These were kindly contributed by
+<a href="http://web.media.mit.edu/~stefie10">Stefanie Tellex</a>. (See the
+<a href="patches/readme.txt">readme</a> for a description.)
+</font></p>
+<!-- End: Page Body -->
+
+
+</td>
+<!-- End: Row 3, col 2, Main Content -->
+
+
+<!-- Row 3, col 3, space between columns -->
+<td width="20" valign="top" bgcolor="#ffffff"><img src="/white.png" width="18" height="18" alt=" " border="0" /></td>
+
+
+<!-- Row 3, col 4, Right column (Links) -->
+<td width="210" valign="top" align="center" bgcolor="#ffffff">
+	<!-- Item frame width -->
+	<!-- This table's cellpadding controls the width of the border frames around each item -->
+	<table width="100%" cellpadding="2" cellspacing="0" border="0">
+
+		<!-- Lower the start location of top of Righthand column -->
+		<tr><td bgcolor="#ffffff"><img src="/white.png" width="206" height="1" alt=" " border="0" /></td></tr>
+
+		<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+		<tr>
+			<td align="center" bgcolor="#cccccc">
+				<table width="100%" cellpadding="5" cellspacing="0" border="0"><tr>
+				<td align="center" bgcolor="#ffffff">
+					<!-- Servo Series Link -->
+					<table width="100%" cellpadding="0" cellspacing="0" border="0">
+						<tr>
+							<td align="center" bgcolor="#ffffff">
+								<p>
+								<font face="verdana, helvetica, arial, sans-serif" size="-1">
+								<b><a href="/opencv/servo_2007_series/part_3/sidebar.html">How Camshift Works</a></b>
+								</font>
+								</p>
+							</td>
+						</tr>
+					</table>
+					<!-- End: Servo Series Link -->
+				</td>
+				</tr></table>
+			</td>
+		</tr>
+
+		<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+		<tr>
+			<td align="center" bgcolor="#ffcc99">
+				<table width="100%" cellpadding="5" cellspacing="0" border="0"><tr>
+				<td align="center" bgcolor="#ffffff">
+					<!-- Links to rest of series -->
+					<font face="verdana, helvetica, arial, sans-serif" size="-1">
+					<b>Seeing With OpenCV:</b><br /><br />
+					</font>
+					<table cellpadding="0" cellspacing="0" border="0"><tr><td align="left">
+						<font face="verdana, helvetica, arial, sans-serif" size="-1">
+						<a href="/opencv/servo_2007_series/part_1/index.html">Part&nbsp;1: Introduction to OpenCV</a><br /><br />
+						<a href="/opencv/servo_2007_series/part_2/index.html">Part&nbsp;2: Finding Faces in Images</a><br /><br />
+						<a href="/opencv/servo_2007_series/part_3/index.html">Part&nbsp;3: Follow that Face!</a><br /><br />
+						<a href="/opencv/servo_2007_series/part_4/index.html">Part&nbsp;4: Face Recognition With Eigenface</a><br /><br />
+						<a href="/opencv/servo_2007_series/part_5/index.html">Part&nbsp;5: Implementing Eigenface</a><br />
+						</font>
+					</td></tr></table>
+					<!-- End: Links to rest of series -->
+				</td>
+				</tr></table>
+			</td>
+		</tr>
+
+		<tr><td bgcolor="#ffffff">&nbsp;</td></tr>
+
+		<tr>
+			<td align="center" bgcolor="#ccccff">
+				<table width="100%" cellpadding="5" cellspacing="0" border="0"><tr>
+				<td align="center" bgcolor="#ffffff">
+					<!-- Link for O'Reilly OpenCV Book -->
+					<font face="verdana, helvetica, arial, sans-serif" size="-1">
+					<b>O'Reilly&nbsp;book&nbsp;from<br />the&nbsp;creators&nbsp;of&nbsp;OpenCV</b>
+					</font>
+					<br />
+					<iframe src="http://rcm.amazon.com/e/cm?t=cognotics-20&amp;o=1&amp;p=8&amp;l=as1&amp;asins=0596516134&amp;fc1=000000&amp;IS2=1&amp;lt1=_blank&amp;m=amazon&amp;lc1=0000FF&amp;bc1=FFFFFF&amp;bg1=FFFFFF&amp;f=ifr" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
+					<!-- End: Link for O'Reilly OpenCV Book -->
+				</td>
+				</tr></table>
+			</td>
+		</tr>
+	</table>
+	<!-- End: Item frame width -->
+</td>
+<!-- End: Row 3, col 4, Right column (Links) -->
+
+<!-- Row 3, col 5, right-hand margin -->
+<td valign="top" bgcolor="#ffffff"><img src="/white.png" width="10" height="1" alt=" " border="0" /></td>
+</tr></table>
+<!-- Col widths: 30 + 630 + 20 + 210 + 10 = 900 -->
+<!-- End: Row 3, Column layout for main content -->
+
+
+<!-- Lower page margin -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr>
+		<td bgcolor="#ffffff">
+			<img src="/white.png" width="1" height="50" border="0" alt=" " />
+		</td>
+	</tr>
+</table>
+<!-- End: Lower page margin -->
+
+<!-- H-line -->
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+	<tr><td class="dkbluehline">
+	</td></tr>
+</table>
+<!-- End: H-line -->
+
+<!-- Page-bottom navigation -->
+<table width="100%" cellpadding="10" cellspacing="0" border="0">
+	<tr>
+		<td class="graybk">
+			<font face="verdana, helvetica, arial, sans-serif" size="-1">
+			<a href="/index.html">Home</a> |
+			<a href="/vision/index.html">Vision</a> |
+			<a href="/opencv/index.html">OpenCV&nbsp;Resources</a>
+			</font>
+		</td>
+	</tr>
+</table>
+<!-- End: Page-bottom navigation -->
+
+</td></tr></table>
+<!-- End of page -->
+
+</td></tr></table>
+<!-- End: Colored page border -->
+
+</body>
+</html>
