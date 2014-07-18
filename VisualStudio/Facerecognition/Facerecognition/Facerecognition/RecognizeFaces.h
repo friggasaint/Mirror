@@ -10,6 +10,8 @@ public:
 	~RecognizeFaces(void);
 
 	void static recognizeFace(std::vector<cv::Mat> images);
+	void static control(float** images);
+	Mat array2Mat();
 
 private:
 	
